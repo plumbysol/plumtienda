@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>plumbysol | Tienda & plum gestión</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lilac: {
+              50: '#faf5ff',
+              100: '#f3e8ff',
+              200: '#e9d5ff',
+              300: '#d8b4fe',
+              400: '#c084fc',
+              500: '#9d7bc2',
+              600: '#8357b2',
+              700: '#6b21a8',
+              800: '#581c87',
+            },
+            brown: {
+              50: '#fdfbf9',
+              100: '#f7f2ed',
+              200: '#ebdcd0',
+              300: '#dac1af',
+              400: '#b48c74',
+              500: '#8c624c',
+              600: '#6a4735',
+              700: '#543628',
+              800: '#3d261d',
+              900: '#2c1a13',
+            },
+            pastel: {
+              yellow: '#fef08a',
+              pink: '#fbcfe8',
+              mint: '#a7f3d0',
+              lavender: '#e9d5ff',
+              cream: '#fffbeb'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #faf7f4;
+      color: #3d261d;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-serif-brand {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="bg-lilac-100 text-brown-800 text-xs sm:text-sm py-2 px-4 text-center font-medium border-b border-lilac-200 flex items-center justify-center gap-2">
+    <span>✨</span>
+    <span id="announcement-text">✨ ¡Nuevos planners imprimibles y plantillas de Canva disponibles para descargar!</span>
+  </div>
+
+  <!-- MAIN HEADER / NAVBAR -->
+  <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-brown-100 shadow-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      
+      <!-- BRAND LOGO -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-lilac-400 to-lilac-600 flex items-center justify-center shadow-md shadow-lilac-200 text-white font-serif-brand font-bold text-xl">
+          p
+        </div>
+        <div>
+          <span class="font-serif-brand text-2xl font-bold tracking-tight text-brown-900 block leading-none">
+            plumbysol
+          </span>
+          <span class="text-[11px] text-brown-500 font-medium tracking-wide">
+            Papelería consciente, planners & diseño digital
+          </span>
+        </div>
+      </div>
+
+      <!-- VIEW SWITCHER (TIENDA PÚBLICA vs PANEL DE GESTIÓN) -->
+      <div class="flex items-center gap-1.5 bg-brown-50 p-1.5 rounded-2xl border border-brown-200">
+        <button 
+          id="btn-nav-store" 
+          onclick="switchView('store')" 
+          class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white text-brown-900 shadow-xs flex items-center gap-2"
+        >
+          <span>🛍️ Tienda plumbysol</span>
+        </button>
+
+        <button 
+          id="btn-nav-admin" 
+          onclick="switchView('admin')" 
+          class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-brown-600 hover:text-brown-900 flex items-center gap-2"
+        >
+          <span id="admin-lock-icon">🔒</span>
+          <span>plum gestión</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-8">
+
+    <!-- ==================== VISTA 1: TIENDA PÚBLICA (plumbysol) ==================== -->
+    <div id="view-store" class="space-y-8">
+      
+      <!-- HERO BANNER -->
+      <section class="rounded-3xl bg-gradient-to-br from-lilac-100/70 via-brown-50 to-pink-50 p-8 sm:p-12 border border-lilac-200 relative overflow-hidden">
+        <div class="max-w-2xl relative z-10">
+          <span class="inline-block px-3 py-1 rounded-full bg-white text-lilac-700 border border-lilac-200 text-xs font-bold mb-3 shadow-2xs">
+            🌸 Packs de Amigurumis, Creaciones Hechas a Mano & Planners
+          </span>
+          <h1 class="font-serif-brand text-3xl sm:text-4xl lg:text-5xl font-bold text-brown-900 leading-tight">
+            Creaciones artesanales que llenan tus días de <span class="text-lilac-600 underline decoration-pastel-yellow decoration-4">ternura y calma</span>
+          </h1>
+          <p class="text-brown-700 text-sm sm:text-base mt-4 leading-relaxed">
+            Descubre nuestros packs de amigurumis tejidos a mano, muñecos artesanales, cuadernos, planners imprimibles en PDF y plantillas de Canva.
+          </p>
+          
+          <div class="flex flex-wrap gap-3 mt-6">
+            <button onclick="setStoreSubTab('products')" class="px-5 py-2.5 rounded-xl bg-brown-900 hover:bg-brown-800 text-white text-xs sm:text-sm font-bold shadow-xs transition-all flex items-center gap-2">
+              <span>🛍️ Ver Catálogo de Productos</span>
+            </button>
+            <button onclick="setStoreSubTab('resources')" class="px-5 py-2.5 rounded-xl bg-white hover:bg-lilac-50 text-brown-800 border border-brown-200 text-xs sm:text-sm font-bold shadow-xs transition-all flex items-center gap-2">
+              <span>📄 Recursos Gratuitos (PDF & Canva)</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PESTAÑAS DE LA TIENDA: PRODUCTOS VS RECURSOS PÚBLICOS -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-brown-200 pb-4">
+        <div class="flex items-center gap-2">
+          <button 
+            id="store-tab-prod" 
+            onclick="setStoreSubTab('products')" 
+            class="px-4 py-2 rounded-xl text-sm font-bold bg-lilac-600 text-white shadow-xs transition-all"
+          >
+            📦 Catálogo de Productos & Amigurumis
+          </button>
+          <button 
+            id="store-tab-res" 
+            onclick="setStoreSubTab('resources')" 
+            class="px-4 py-2 rounded-xl text-sm font-semibold bg-white text-brown-700 hover:bg-lilac-50 border border-brown-200 transition-all flex items-center gap-2"
+          >
+            <span>📥 Biblioteca de Descargas</span>
+            <span id="public-res-count" class="bg-pastel-mint text-brown-900 text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+          </button>
+        </div>
+
+        <!-- Buscador -->
+        <div class="relative w-full sm:w-72">
+          <input 
+            type="text" 
+            id="store-search" 
+            oninput="renderStoreContent()" 
+            placeholder="Buscar amigurumis, planners, canva..." 
+            class="w-full pl-9 pr-4 py-2 rounded-xl bg-white border border-brown-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lilac-400 text-brown-900"
+          />
+          <span class="absolute left-3 top-2.5 text-brown-400 text-xs">🔍</span>
+        </div>
+      </div>
+
+      <!-- FILTRO DE CATEGORÍAS EN TIENDA -->
+      <div id="store-category-filters" class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs"></div>
+
+      <!-- SECCIÓN 1: PRODUCTOS DISPONIBLES -->
+      <div id="store-products-view" class="space-y-6">
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+
+      <!-- SECCIÓN 2: RECURSOS PÚBLICOS (PDF & CANVA) -->
+      <div id="store-resources-view" class="hidden space-y-6">
+        <div class="p-4 rounded-2xl bg-pastel-mint/30 border border-emerald-200 text-xs text-brown-800">
+          💡 En esta sección puedes descargar guías en PDF y abrir plantillas de Canva para uso personal.
+        </div>
+        <div id="store-resources-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+
+    </div>
+
+    <!-- ==================== VISTA 2: PANEL DE GESTIÓN (plum gestión) ==================== -->
+    <div id="view-admin" class="hidden space-y-8">
+      
+      <!-- GATE DE ACCESO / LOGIN SIMPLE EN JAVASCRIPT -->
+      <div id="admin-auth-gate" class="max-w-md mx-auto my-12 bg-white p-8 rounded-3xl border border-brown-200 shadow-xl text-center">
+        <div class="w-16 h-16 rounded-2xl bg-lilac-100 text-lilac-700 flex items-center justify-center mx-auto mb-4 border border-lilac-200">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        </div>
+        <h2 class="font-serif-brand text-2xl font-bold text-brown-900 mb-1">Acceso a plum gestión</h2>
+        <p class="text-xs text-brown-500 mb-6">Ingresa la contraseña de administradora para gestionar tus productos, packs de amigurumis y recursos.</p>
+        
+        <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+          <div class="relative">
+            <input type="password" id="admin-pwd-input" placeholder="Contraseña..." class="w-full px-4 py-2.5 rounded-xl border border-brown-200 text-sm focus:outline-none focus:ring-2 focus:ring-lilac-400 text-brown-900" required />
+            <span class="block text-[11px] text-brown-400 mt-1 text-left">💡 Contraseña predeterminada: <strong>plum123</strong></span>
+          </div>
+          <p id="auth-error-msg" class="text-xs text-rose-600 font-semibold hidden">Contraseña incorrecta. Intenta nuevamente.</p>
+          <button type="submit" class="w-full py-2.5 rounded-xl bg-lilac-600 hover:bg-lilac-700 text-white font-semibold text-sm transition-all shadow-sm">
+            Entrar al Panel
+          </button>
+        </form>
+      </div>
+
+      <!-- PANEL INTERNO LOGUEADO -->
+      <div id="admin-authenticated-area" class="hidden space-y-8">
+        
+        <!-- ADMIN HEADER & BOTONES PRINCIPALES -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-brown-200 shadow-xs">
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="font-serif-brand text-2xl font-bold text-brown-900">Panel de Control: plum gestión</h2>
+              <span class="text-xs bg-pastel-mint text-brown-800 px-2.5 py-0.5 rounded-full font-bold border border-emerald-300">Sesión Activa</span>
+            </div>
+            <p class="text-xs text-brown-500 mt-1">Gestión 100% editable de productos, amigurumis, categorías y recursos guardados en LocalStorage.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="openProductModal()" class="px-4 py-2.5 rounded-xl bg-brown-900 hover:bg-brown-800 text-white text-xs sm:text-sm font-bold transition-all shadow-sm flex items-center gap-1.5">
+              <span>🧸 + Nuevo Producto / Pack</span>
+            </button>
+            <button onclick="openCategoryManagerModal()" class="px-3.5 py-2.5 rounded-xl bg-white hover:bg-lilac-50 text-lilac-700 border border-lilac-300 text-xs font-bold transition-all shadow-2xs flex items-center gap-1.5">
+              <span>🏷️ Gestionar Categorías</span>
+            </button>
+            <button onclick="openResourceModal()" class="px-3.5 py-2.5 rounded-xl bg-lilac-600 hover:bg-lilac-700 text-white text-xs sm:text-sm font-bold transition-all shadow-sm flex items-center gap-1.5">
+              <span>📄 + Agregar Recurso</span>
+            </button>
+            <button onclick="handleAdminLogout()" class="px-3 py-2.5 rounded-xl bg-brown-50 hover:bg-brown-100 text-brown-700 border border-brown-200 text-xs font-semibold transition-all">
+              Cerrar Sesión
+            </button>
+          </div>
+        </div>
+
+        <!-- TARJETAS DE MÉTRICAS -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="bg-white p-4 rounded-2xl border border-brown-100 shadow-2xs">
+            <p class="text-[11px] font-semibold text-brown-500 uppercase tracking-wider">Productos en Tienda</p>
+            <p id="metric-total-prod" class="text-2xl font-serif-brand font-bold text-brown-900 mt-1">0</p>
+            <span class="text-[11px] text-brown-400">Packs de amigurumis y más</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-brown-100 shadow-2xs">
+            <p class="text-[11px] font-semibold text-rose-600 uppercase tracking-wider">
+              📄 Archivos PDF
+            </p>
+            <p id="metric-pdf-count" class="text-2xl font-serif-brand font-bold text-brown-900 mt-1">0</p>
+            <span class="text-[11px] text-brown-400">Guías e imprimibles</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-brown-100 shadow-2xs">
+            <p class="text-[11px] font-semibold text-lilac-600 uppercase tracking-wider">
+              🎨 Editables Canva
+            </p>
+            <p id="metric-canva-count" class="text-2xl font-serif-brand font-bold text-brown-900 mt-1">0</p>
+            <span class="text-[11px] text-brown-400">Plantillas con enlace</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-brown-100 shadow-2xs">
+            <p class="text-[11px] font-semibold text-emerald-600 uppercase tracking-wider">
+              🌐 Públicos en Tienda
+            </p>
+            <p id="metric-public-count" class="text-2xl font-serif-brand font-bold text-brown-900 mt-1">0</p>
+            <span class="text-[11px] text-brown-400">Disponibles a clientes</span>
+          </div>
+        </div>
+
+        <!-- SUB-PESTAÑAS DEL PANEL ADMIN -->
+        <div class="flex items-center gap-2 border-b border-brown-200 pb-2">
+          <button id="admin-tab-btn-products" onclick="setAdminMainTab('products')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brown-900 text-white shadow-xs transition-all">
+            🧸 Catálogo de Productos & Amigurumis
+          </button>
+          <button id="admin-tab-btn-resources" onclick="setAdminMainTab('resources')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-brown-700 hover:text-brown-900 transition-all">
+            📄 Biblioteca de Recursos (PDF / Canva)
+          </button>
+        </div>
+
+        <!-- ================= VISTA ADMIN 1: GESTIÓN DE PRODUCTOS & AMIGURUMIS ================= -->
+        <div id="admin-view-products" class="bg-white p-6 rounded-3xl border border-brown-200 shadow-xs space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-brown-100">
+            <div>
+              <h3 class="font-serif-brand text-xl font-bold text-brown-900">Productos & Packs de Amigurumis</h3>
+              <p class="text-xs text-brown-500">Haz clic en "Editar Detalles" en cualquier producto para cambiar fotos, precios, descripciones o stock.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openCategoryManagerModal()" class="px-3 py-1.5 rounded-xl border border-lilac-300 text-lilac-700 text-xs font-bold hover:bg-lilac-50 flex items-center gap-1">
+                🏷️ Gestionar Categorías
+              </button>
+              <button onclick="openProductModal()" class="px-3.5 py-1.5 rounded-xl bg-brown-900 text-white text-xs font-bold hover:bg-brown-800 flex items-center gap-1">
+                + Nuevo Producto
+              </button>
+            </div>
+          </div>
+
+          <!-- Filtro de Categorías de Productos en Admin -->
+          <div id="admin-product-categories-filter" class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs"></div>
+
+          <!-- Grid de Productos en Admin -->
+          <div id="admin-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+
+        <!-- ================= VISTA ADMIN 2: BIBLIOTECA DE RECURSOS ================= -->
+        <div id="admin-view-resources" class="hidden bg-white p-6 rounded-3xl border border-brown-200 shadow-xs space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-brown-100">
+            <div>
+              <h3 class="font-serif-brand text-xl font-bold text-brown-900">Biblioteca de Recursos</h3>
+              <p class="text-xs text-brown-500">Organiza tus archivos en pestañas y controla su visibilidad pública.</p>
+            </div>
+
+            <!-- PESTAÑAS: TODOS / ARCHIVOS PDF / EDITABLES EN CANVA -->
+            <div class="flex items-center bg-brown-50 p-1 rounded-xl border border-brown-200">
+              <button id="tab-res-all" onclick="setAdminResourceFilter('all')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-brown-900 shadow-xs">
+                Todos
+              </button>
+              <button id="tab-res-pdf" onclick="setAdminResourceFilter('pdf')" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-brown-600 hover:text-brown-900">
+                📄 Archivos PDF
+              </button>
+              <button id="tab-res-canva" onclick="setAdminResourceFilter('canva')" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-brown-600 hover:text-brown-900">
+                🎨 Editables en Canva
+              </button>
+            </div>
+          </div>
+
+          <!-- GRID DE TARJETAS EN EL PANEL ADMIN -->
+          <div id="admin-resources-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== MODAL FORMULARIO: AGREGAR / EDITAR RECURSO ==================== -->
+  <div id="modal-resource-form" class="fixed inset-0 bg-brown-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-brown-200 shadow-2xl overflow-y-auto max-h-[90vh]">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-brown-100 mb-6">
+        <h3 id="modal-form-title" class="font-serif-brand text-xl font-bold text-brown-900">Agregar Nuevo Recurso</h3>
+        <button onclick="closeResourceModal()" class="w-8 h-8 rounded-full bg-brown-100 hover:bg-brown-200 flex items-center justify-center text-brown-700">✕</button>
+      </div>
+
+      <form onsubmit="handleSaveResource(event)" class="space-y-4">
+        <input type="hidden" id="form-resource-id" />
+
+        <!-- TÍTULO -->
+        <div>
+          <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Título del Recurso *</label>
+          <input type="text" id="form-resource-title" placeholder="Ej: Planner Semanal Minimalista 2025" required class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none" />
+        </div>
+
+        <!-- TIPO: PDF vs CANVA -->
+        <div>
+          <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1.5">Tipo de Recurso *</label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="flex items-center gap-2 p-3 rounded-xl border-2 cursor-pointer transition-all border-brown-200 hover:border-rose-400 has-[:checked]:border-rose-500 has-[:checked]:bg-rose-50/50">
+              <input type="radio" name="resource-type" value="pdf" checked class="text-rose-600 focus:ring-rose-500" />
+              <div>
+                <p class="text-xs font-bold text-brown-900">📄 Archivo PDF</p>
+                <p class="text-[11px] text-brown-500">Documento imprimible</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border-2 cursor-pointer transition-all border-brown-200 hover:border-lilac-400 has-[:checked]:border-lilac-500 has-[:checked]:bg-lilac-50/50">
+              <input type="radio" name="resource-type" value="canva" class="text-lilac-600 focus:ring-lilac-500" />
+              <div>
+                <p class="text-xs font-bold text-brown-900">🎨 Editable en Canva</p>
+                <p class="text-[11px] text-brown-500">Plantilla con enlace web</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- ENLACE -->
+        <div>
+          <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Enlace de Descarga o Enlace Canva *</label>
+          <input type="url" id="form-resource-url" placeholder="https://..." required class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none font-mono text-xs" />
+        </div>
+
+        <!-- IMAGEN DE PORTADA -->
+        <div>
+          <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Imagen de Portada (URL) *</label>
+          <input type="url" id="form-resource-image" placeholder="https://images.unsplash.com/..." required class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none" />
+          
+          <div class="mt-2">
+            <span class="text-[11px] font-semibold text-brown-500">Portadas sugeridas:</span>
+            <div class="flex items-center gap-2 mt-1.5 overflow-x-auto pb-1">
+              <button type="button" onclick="setPresetImage('https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80')" class="px-2 py-1 text-[11px] bg-lilac-100 hover:bg-lilac-200 rounded-lg text-brown-800 border border-lilac-200 whitespace-nowrap">🌸 Planner</button>
+              <button type="button" onclick="setPresetImage('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80')" class="px-2 py-1 text-[11px] bg-pastel-pink hover:bg-pink-200 rounded-lg text-brown-800 border border-pink-200 whitespace-nowrap">✨ Feed Canva</button>
+              <button type="button" onclick="setPresetImage('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80')" class="px-2 py-1 text-[11px] bg-pastel-mint hover:bg-emerald-200 rounded-lg text-brown-800 border border-emerald-200 whitespace-nowrap">🌿 Tracker</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORÍA CON CREACIÓN DE ETIQUETAS PERSONALIZADAS -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider">Categoría de Recurso *</label>
+            <button type="button" onclick="toggleCustomCategoryInput()" class="text-xs text-lilac-600 font-bold hover:underline">+ Crear nueva categoría</button>
+          </div>
+          
+          <div id="box-new-category" class="hidden p-3 rounded-xl bg-brown-50 border border-lilac-300 space-y-2">
+            <span class="text-[11px] font-bold text-brown-700">Nueva etiqueta para recursos:</span>
+            <div class="flex gap-2">
+              <input type="text" id="input-custom-category" placeholder="Ej: Wallpapers, Guias..." class="flex-1 px-3 py-1.5 text-xs rounded-lg border border-brown-200 bg-white text-brown-900 focus:outline-none focus:ring-1 focus:ring-lilac-400" />
+              <button type="button" onclick="saveCustomCategoryFromForm()" class="px-3 py-1.5 rounded-lg bg-lilac-600 hover:bg-lilac-700 text-white text-xs font-bold">Guardar</button>
+              <button type="button" onclick="toggleCustomCategoryInput()" class="px-2 py-1.5 rounded-lg bg-brown-100 text-brown-600 text-xs font-semibold">✕</button>
+            </div>
+          </div>
+
+          <select id="form-resource-category" onchange="onCategorySelectChange(this.value)" class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none bg-white"></select>
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div>
+          <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Descripción breve</label>
+          <textarea id="form-resource-desc" rows="2" placeholder="Detalles, recomendaciones..." class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none"></textarea>
+        </div>
+
+        <!-- VISIBILIDAD EN TIENDA -->
+        <div class="flex items-center justify-between p-3.5 rounded-xl bg-brown-50 border border-brown-200">
+          <div>
+            <p class="text-xs font-bold text-brown-900">¿Visible en tienda pública?</p>
+            <p class="text-[11px] text-brown-500">Permite que tus clientes lo vean y descarguen.</p>
+          </div>
+          <input type="checkbox" id="form-resource-public" checked class="w-5 h-5 accent-lilac-600 rounded cursor-pointer" />
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-brown-100">
+          <button type="button" onclick="closeResourceModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-brown-600 hover:bg-brown-100">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-lilac-600 hover:bg-lilac-700 text-white text-xs font-bold shadow-sm transition-all">
+            Guardar en LocalStorage
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL FORMULARIO: AGREGAR / EDITAR PRODUCTO / AMIGURUMI ==================== -->
+  <div id="modal-product-form" class="fixed inset-0 bg-brown-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-brown-200 shadow-2xl overflow-y-auto max-h-[90vh]">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-brown-100 mb-6">
+        <h3 id="modal-product-title" class="font-serif-brand text-xl font-bold text-brown-900">Agregar Producto / Pack de Amigurumi</h3>
+        <button onclick="closeProductModal()" class="w-8 h-8 rounded-full bg-brown-100 hover:bg-brown-200 flex items-center justify-center text-brown-700">✕</button>
+      </div>
+
+      <form onsubmit="handleSaveProduct(event)" class="space-y-4">
+        <input type="hidden" id="form-product-id" />
+
+        <!-- NOMBRE -->
+        <div>
+          <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Nombre del Producto o Pack *</label>
+          <input type="text" id="form-product-name" placeholder="Ej: Pack Trío de Amigurumis Bosque Pastel" required class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none" />
+        </div>
+
+        <!-- PRECIO Y MONEDA -->
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Moneda</label>
+            <select id="form-product-currency" class="w-full px-3 py-2 rounded-xl border border-brown-200 text-xs font-bold bg-white">
+              <option value="$">$ (Pesos / Dólares)</option>
+              <option value="USD">USD</option>
+              <option value="ARS">ARS</option>
+              <option value="MXN">MXN</option>
+              <option value="EUR">EUR</option>
+            </select>
+          </div>
+          <div class="col-span-2">
+            <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Precio *</label>
+            <input type="number" step="0.01" min="0" id="form-product-price" placeholder="24.50" required class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm font-serif-brand font-bold focus:ring-2 focus:ring-lilac-400 focus:outline-none" />
+          </div>
+        </div>
+
+        <!-- CATEGORÍA DE PRODUCTO -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider">Categoría del Producto *</label>
+            <button type="button" onclick="toggleCustomProductCategoryInput()" class="text-xs text-lilac-600 font-bold hover:underline">+ Crear nueva categoría</button>
+          </div>
+
+          <div id="box-new-prod-category" class="hidden p-3 rounded-xl bg-brown-50 border border-lilac-300 space-y-2">
+            <span class="text-[11px] font-bold text-brown-700">Nueva categoría de producto (ej: Packs Amigurumi, Crochet Bebé):</span>
+            <div class="flex gap-2">
+              <input type="text" id="input-custom-prod-category" placeholder="Ej: Amigurumis Personalizados..." class="flex-1 px-3 py-1.5 text-xs rounded-lg border border-brown-200 bg-white text-brown-900 focus:outline-none focus:ring-1 focus:ring-lilac-400" />
+              <button type="button" onclick="saveCustomProductCategoryFromForm()" class="px-3 py-1.5 rounded-lg bg-lilac-600 hover:bg-lilac-700 text-white text-xs font-bold">Guardar</button>
+              <button type="button" onclick="toggleCustomProductCategoryInput()" class="px-2 py-1.5 rounded-lg bg-brown-100 text-brown-600 text-xs font-semibold">✕</button>
+            </div>
+          </div>
+
+          <select id="form-product-category" onchange="onProductCategorySelectChange(this.value)" class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none bg-white"></select>
+        </div>
+
+        <!-- IMAGEN -->
+        <div>
+          <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Foto o Imagen (URL) *</label>
+          <input type="url" id="form-product-image" placeholder="https://images.unsplash.com/..." required class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none" />
+          
+          <div class="mt-2">
+            <span class="text-[11px] font-semibold text-brown-500">Muestras para Amigurumis & Papelería:</span>
+            <div class="flex items-center gap-2 mt-1.5 overflow-x-auto pb-1">
+              <button type="button" onclick="setPresetProductImage('https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80')" class="px-2 py-1 text-[11px] bg-pastel-yellow hover:bg-yellow-200 rounded-lg text-brown-800 border border-yellow-200 whitespace-nowrap">🧸 Pack Amigurumi</button>
+              <button type="button" onclick="setPresetProductImage('https://images.unsplash.com/photo-1558679908-541bcf1249ff?auto=format&fit=crop&w=800&q=80')" class="px-2 py-1 text-[11px] bg-lilac-100 hover:bg-lilac-200 rounded-lg text-brown-800 border border-lilac-200 whitespace-nowrap">🌸 Muñeca Crochet</button>
+              <button type="button" onclick="setPresetProductImage('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80')" class="px-2 py-1 text-[11px] bg-pastel-mint hover:bg-emerald-200 rounded-lg text-brown-800 border border-emerald-200 whitespace-nowrap">🐙 Pulpo Mini</button>
+              <button type="button" onclick="setPresetProductImage('https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=800&q=80')" class="px-2 py-1 text-[11px] bg-pink-100 hover:bg-pink-200 rounded-lg text-brown-800 border border-pink-200 whitespace-nowrap">📖 Cuaderno Tela</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INSIGNIA / BADGE -->
+        <div>
+          <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Insignia / Etiqueta de Destacado</label>
+          <input type="text" id="form-product-badge" placeholder="Ej: Hecho a Mano, Bestseller Amigurumi, Pack Especial" class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none" />
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div>
+          <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1">Descripción detallada *</label>
+          <textarea id="form-product-desc" rows="3" placeholder="Detalles de materiales, hilado 100% algodón, medidas, qué incluye el pack..." required class="w-full px-3.5 py-2 rounded-xl border border-brown-200 text-sm focus:ring-2 focus:ring-lilac-400 focus:outline-none"></textarea>
+        </div>
+
+        <!-- STOCK DISPONIBLE -->
+        <div class="flex items-center justify-between p-3.5 rounded-xl bg-brown-50 border border-brown-200">
+          <div>
+            <p class="text-xs font-bold text-brown-900">¿Producto en Stock / Disponible?</p>
+            <p class="text-[11px] text-brown-500">Si se desmarca, se mostrará como "Agotado" en la tienda.</p>
+          </div>
+          <input type="checkbox" id="form-product-stock" checked class="w-5 h-5 accent-emerald-600 rounded cursor-pointer" />
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-brown-100">
+          <button type="button" onclick="closeProductModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-brown-600 hover:bg-brown-100">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-brown-900 hover:bg-brown-800 text-white text-xs font-bold shadow-sm transition-all">
+            Guardar Producto
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL GESTOR DE CATEGORÍAS ==================== -->
+  <div id="modal-category-manager" class="fixed inset-0 bg-brown-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-brown-200 shadow-2xl overflow-y-auto max-h-[90vh]">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-brown-100 mb-5">
+        <div>
+          <h3 class="font-serif-brand text-xl font-bold text-brown-900">Gestor de Categorías</h3>
+          <p class="text-xs text-brown-500">Crea, edita o elimina las categorías de lo que ofreces.</p>
+        </div>
+        <button onclick="closeCategoryManagerModal()" class="w-8 h-8 rounded-full bg-brown-100 hover:bg-brown-200 flex items-center justify-center text-brown-700">✕</button>
+      </div>
+
+      <!-- Selector entre Categorías de Productos vs Recursos -->
+      <div class="grid grid-cols-2 gap-2 p-1 bg-brown-50 rounded-2xl mb-4 border border-brown-200">
+        <button id="cat-mgr-tab-prod" onclick="setCategoryManagerTab('products')" class="py-2 px-3 rounded-xl text-xs font-bold bg-white text-brown-900 shadow-xs">
+          🧸 Productos & Amigurumis
+        </button>
+        <button id="cat-mgr-tab-res" onclick="setCategoryManagerTab('resources')" class="py-2 px-3 rounded-xl text-xs font-semibold text-brown-600 hover:text-brown-900">
+          📄 Recursos (PDF & Canva)
+        </button>
+      </div>
+
+      <!-- Input agregar nueva categoría -->
+      <div class="mb-5">
+        <label class="block text-xs font-bold text-brown-800 uppercase tracking-wider mb-1.5">+ Agregar nueva categoría:</label>
+        <div class="flex gap-2">
+          <input type="text" id="cat-mgr-new-input" placeholder="Ej: Packs Amigurumi, Crochet Bebé..." class="flex-1 px-3.5 py-2 text-xs sm:text-sm rounded-xl border border-brown-200 bg-white text-brown-900 focus:outline-none focus:ring-2 focus:ring-lilac-400" />
+          <button onclick="handleAddCategoryFromManager()" class="px-4 py-2 rounded-xl bg-lilac-600 hover:bg-lilac-700 text-white text-xs font-bold">
+            Agregar
+          </button>
+        </div>
+      </div>
+
+      <!-- Lista de categorías -->
+      <div class="space-y-2 max-h-64 overflow-y-auto pr-1" id="cat-mgr-list"></div>
+
+      <div class="mt-6 pt-4 border-t border-brown-100 flex items-center justify-between">
+        <span class="text-[11px] text-brown-400">Persistido en LocalStorage</span>
+        <button onclick="closeCategoryManagerModal()" class="px-5 py-2 rounded-xl bg-brown-900 text-white text-xs font-bold">
+          Listo / Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto bg-brown-900 text-brown-200 py-8 px-4 border-t border-brown-800">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div class="flex items-center gap-2">
+        <span class="font-serif-brand text-lg text-white font-bold">plumbysol</span>
+        <span>·</span>
+        <span>Panel plum gestión</span>
+      </div>
+      <p class="text-brown-400">Desarrollado para GitHub Pages con Tailwind CSS y LocalStorage.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT NATIVO ==================== -->
+  <script>
+    // CLAVES DE LOCALSTORAGE
+    const STORAGE_KEY_RES = 'plumbysol_resources_v1';
+    const STORAGE_KEY_PROD = 'plumbysol_products_v2';
+    const STORAGE_KEY_AUTH = 'plumbysol_auth_v1';
+    const STORAGE_KEY_CATS = 'plumbysol_categories_v1';
+    const STORAGE_KEY_PROD_CATS = 'plumbysol_product_categories_v1';
+
+    let currentView = 'store'; // 'store' o 'admin'
+    let storeSubTab = 'products'; // 'products' o 'resources'
+    let storeSelectedCat = 'all';
+    let adminResourceFilter = 'all'; // 'all', 'pdf', 'canva'
+    let adminProductCatFilter = 'all';
+    let adminMainTab = 'products'; // 'products' o 'resources'
+    let isAdminLoggedIn = false;
+    let catManagerTab = 'products';
+
+    // DATOS DE MUESTRA POR DEFECTO
+    const INITIAL_RESOURCES = [
+  {
+    "id": "res-1",
+    "title": "Planner Semanal 2025 Minimalista (A4 & Carta)",
+    "type": "pdf",
+    "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "coverImage": "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80",
+    "description": "Diagramación vertical semanal con bloque de prioridades, tracker de agua y notas en cálido tono lila y marrón.",
+    "category": "Planners & Agendas",
+    "isPublic": true,
+    "createdAt": "2025-01-10",
+    "badge": "Descarga Libre",
+    "downloads": 142
+  },
+  {
+    "id": "res-2",
+    "title": "Kit de 30 Plantillas de Instagram Boho & Lila",
+    "type": "canva",
+    "url": "https://www.canva.com/design?template=instagram-kit-boho",
+    "coverImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    "description": "Posteos y carruseles 100% editables en Canva: cambia textos, fotos y paletas con tu propia tipografía.",
+    "category": "Redes Sociales",
+    "isPublic": true,
+    "createdAt": "2025-01-12",
+    "badge": "Plantilla Canva",
+    "downloads": 389
+  },
+  {
+    "id": "res-3",
+    "title": "Tracker de Hábitos & Rutina Mañanera Consciente",
+    "type": "pdf",
+    "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "coverImage": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80",
+    "description": "Hoja mensual para registrar lectura, ejercicio, meditación y horas de sueño con casillas para colorear.",
+    "category": "Organización",
+    "isPublic": true,
+    "createdAt": "2025-01-15",
+    "badge": "Imprimible",
+    "downloads": 87
+  },
+  {
+    "id": "res-4",
+    "title": "Portadas de Historias Destacadas (Pastel Glow)",
+    "type": "canva",
+    "url": "https://www.canva.com/design?template=story-highlights-pastel",
+    "coverImage": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80",
+    "description": "Colección de 24 íconos minimalistas para Instagram en fondo lila suave y trazo chocolate.",
+    "category": "Redes Sociales",
+    "isPublic": true,
+    "createdAt": "2025-01-18",
+    "badge": "Editable",
+    "downloads": 215
+  },
+  {
+    "id": "res-5",
+    "title": "Plantilla de Factura & Cotización Comercial Elegante",
+    "type": "canva",
+    "url": "https://www.canva.com/design?template=invoice-plum-pro",
+    "coverImage": "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=800&q=80",
+    "description": "Plantilla profesional para enviar presupuestos a clientes de diseño y servicios. Cálculo de totales y datos bancarios.",
+    "category": "Gestión & Negocio",
+    "isPublic": false,
+    "createdAt": "2025-01-20",
+    "badge": "Uso Interno",
+    "downloads": 45
+  },
+  {
+    "id": "res-6",
+    "title": "Guía de Paletas de Color en Tonos Pastel & Neutros",
+    "type": "pdf",
+    "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "coverImage": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+    "description": "Ebook con 15 combinaciones armónicas de lila, menta, vainilla y marrón café con sus códigos HEX y CMYK.",
+    "category": "Diseño & Estilo",
+    "isPublic": true,
+    "createdAt": "2025-01-22",
+    "badge": "E-book PDF",
+    "downloads": 310
+  },
+  {
+    "id": "res-7",
+    "title": "Planilla de Control de Stock y Ventas Mensuales",
+    "type": "pdf",
+    "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "coverImage": "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
+    "description": "Hoja de cálculo imprimible para anotar costos, ingresos, pedidos pendientes y balance neto del mes.",
+    "category": "Gestión & Negocio",
+    "isPublic": false,
+    "createdAt": "2025-01-25",
+    "badge": "Uso Interno",
+    "downloads": 19
+  }
+];
+    const INITIAL_PRODUCTS = [
+  {
+    "id": "prod-ami-1",
+    "name": "Pack Trío de Amigurumis Bosque Pastel (Conejito, Osito & Ciervo)",
+    "price": 34,
+    "currency": "$",
+    "category": "Packs Amigurumi",
+    "image": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80",
+    "description": "Pack de 3 muñecos tejidos a mano con hilado 100% algodón hipoalergénico, ojos de seguridad y relleno vellón siliconado en tonos lila, crema y caramelo.",
+    "featured": true,
+    "inStock": true,
+    "badge": "Bestseller Amigurumi"
+  },
+  {
+    "id": "prod-ami-2",
+    "name": "Amigurumi Muñeca Artesanal \"Sol\" con Vestido Lila & Boina",
+    "price": 24.5,
+    "currency": "$",
+    "category": "Amigurumis & Crochet",
+    "image": "https://images.unsplash.com/photo-1558679908-541bcf1249ff?auto=format&fit=crop&w=800&q=80",
+    "description": "Muñeca de apego tejida a crochet de 26 cm. Vestidito desmontable en lila pastel, zapatitos marrones y bouquet de flores bordadas.",
+    "featured": true,
+    "inStock": true,
+    "badge": "Hecho a Mano"
+  },
+  {
+    "id": "prod-ami-3",
+    "name": "Mini Amigurumi Llavero Pulpo Sensorial Relajante",
+    "price": 8.5,
+    "currency": "$",
+    "category": "Amigurumis & Crochet",
+    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80",
+    "description": "Tentáculos elásticos diseñados para el tacto y la calma. Incluye argolla metálica dorada y cascabel sutil.",
+    "featured": false,
+    "inStock": true,
+    "badge": "Favorito"
+  },
+  {
+    "id": "prod-1",
+    "name": "Cuaderno Artesanal Pasta Dura Tela Lavanda & Folio Oro",
+    "price": 18.5,
+    "currency": "$",
+    "category": "Cuadernos",
+    "image": "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=800&q=80",
+    "description": "Encuadernación copta hecha a mano con 160 páginas de papel bookcel de 90g color marfil. Cinta señaladora en lila.",
+    "featured": true,
+    "inStock": true,
+    "badge": "Bestseller"
+  },
+  {
+    "id": "prod-2",
+    "name": "Planner Perpetuo Desk Pad (50 Hojas Desprendibles)",
+    "price": 14,
+    "currency": "$",
+    "category": "Planners",
+    "image": "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80",
+    "description": "Bloque semanal sin fechas para que comiences en cualquier época del año. Tinta marrón sobre papel ecológico 120g.",
+    "featured": true,
+    "inStock": true,
+    "badge": "Nuevo"
+  },
+  {
+    "id": "prod-3",
+    "name": "Set de 6 Washi Tapes Pasteles & Detalles Dorados",
+    "price": 9.9,
+    "currency": "$",
+    "category": "Papelería & Deco",
+    "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
+    "description": "Cintas adhesivas decorativas japonesas con motivos botánicos, cuadrículas suaves y tonos lila, vainilla y rosa.",
+    "featured": false,
+    "inStock": true,
+    "badge": "Favorito"
+  },
+  {
+    "id": "prod-4",
+    "name": "Taza de Cerámica Gres Artesanal \"Plum Mornings\"",
+    "price": 16.5,
+    "currency": "$",
+    "category": "Hogar & Café",
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80",
+    "description": "Moldeada en torno alfarero y esmaltada a fuego lento con degradado lila cremoso y base terracota rústica.",
+    "featured": true,
+    "inStock": true,
+    "badge": "Edición Limitada"
+  },
+  {
+    "id": "prod-5",
+    "name": "Pack de 40 Stickers Ilustrados Mate \"Días Calmos\"",
+    "price": 6.5,
+    "currency": "$",
+    "category": "Papelería & Deco",
+    "image": "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=800&q=80",
+    "description": "Vinilos resistentes al agua con ilustraciones de plantas, tacitas de té, libros y frases inspiradoras.",
+    "featured": false,
+    "inStock": true,
+    "badge": "Imprescindible"
+  },
+  {
+    "id": "prod-6",
+    "name": "Bolígrafo Rollerball Gel Tinta Marrón Sepia",
+    "price": 4.5,
+    "currency": "$",
+    "category": "Escritura",
+    "image": "https://images.unsplash.com/photo-1585336261026-41ff36081498?auto=format&fit=crop&w=800&q=80",
+    "description": "Cuerpo lila satinado con punta fina de 0.5mm. Trazo ultra suave y fluido ideal para journaling y caligrafía.",
+    "featured": false,
+    "inStock": true,
+    "badge": "Novedad"
+  }
+];
+    const INITIAL_CATEGORIES = [
+  "Planners & Agendas",
+  "Redes Sociales",
+  "Organización & Hábitos",
+  "Diseño & Estilo",
+  "Gestión & Negocio",
+  "Papelería Creativa"
+];
+    const INITIAL_PRODUCT_CATEGORIES = [
+  "Amigurumis & Crochet",
+  "Packs Amigurumi",
+  "Cuadernos",
+  "Planners",
+  "Papelería & Deco",
+  "Hogar & Café",
+  "Escritura"
+];
+
+    let resources = [];
+    let products = [];
+    let categories = [];
+    let productCategories = [];
+
+    function initData() {
+      // 1. Recursos
+      const storedRes = localStorage.getItem(STORAGE_KEY_RES);
+      resources = storedRes ? JSON.parse(storedRes) : INITIAL_RESOURCES;
+      if (!storedRes) localStorage.setItem(STORAGE_KEY_RES, JSON.stringify(resources));
+
+      // 2. Productos & Amigurumis
+      const storedProd = localStorage.getItem(STORAGE_KEY_PROD);
+      products = storedProd ? JSON.parse(storedProd) : INITIAL_PRODUCTS;
+      if (!storedProd) localStorage.setItem(STORAGE_KEY_PROD, JSON.stringify(products));
+
+      // 3. Categorías de Recursos
+      const storedCats = localStorage.getItem(STORAGE_KEY_CATS);
+      categories = storedCats ? JSON.parse(storedCats) : INITIAL_CATEGORIES;
+      if (!storedCats) localStorage.setItem(STORAGE_KEY_CATS, JSON.stringify(categories));
+
+      // 4. Categorías de Productos
+      const storedProdCats = localStorage.getItem(STORAGE_KEY_PROD_CATS);
+      productCategories = storedProdCats ? JSON.parse(storedProdCats) : INITIAL_PRODUCT_CATEGORIES;
+      if (!storedProdCats) localStorage.setItem(STORAGE_KEY_PROD_CATS, JSON.stringify(productCategories));
+
+      // 5. Auth
+      isAdminLoggedIn = sessionStorage.getItem(STORAGE_KEY_AUTH) === 'true';
+
+      updateUI();
+    }
+
+    // ALTERNAR VISTAS (TIENDA vs ADMIN)
+    function switchView(view) {
+      currentView = view;
+      const viewStore = document.getElementById('view-store');
+      const viewAdmin = document.getElementById('view-admin');
+      const btnStore = document.getElementById('btn-nav-store');
+      const btnAdmin = document.getElementById('btn-nav-admin');
+
+      if (view === 'store') {
+        viewStore.classList.remove('hidden');
+        viewAdmin.classList.add('hidden');
+        btnStore.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white text-brown-900 shadow-xs flex items-center gap-2';
+        btnAdmin.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-brown-600 hover:text-brown-900 flex items-center gap-2';
+      } else {
+        viewStore.classList.add('hidden');
+        viewAdmin.classList.remove('hidden');
+        btnAdmin.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white text-brown-900 shadow-xs flex items-center gap-2';
+        btnStore.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-brown-600 hover:text-brown-900 flex items-center gap-2';
+      }
+      updateUI();
+    }
+
+    // SUB-PESTAÑAS DE TIENDA
+    function setStoreSubTab(tab) {
+      storeSubTab = tab;
+      const viewProd = document.getElementById('store-products-view');
+      const viewRes = document.getElementById('store-resources-view');
+      const tabProd = document.getElementById('store-tab-prod');
+      const tabRes = document.getElementById('store-tab-res');
+
+      if (tab === 'products') {
+        viewProd.classList.remove('hidden');
+        viewRes.classList.add('hidden');
+        tabProd.className = 'px-4 py-2 rounded-xl text-sm font-bold bg-lilac-600 text-white shadow-xs transition-all';
+        tabRes.className = 'px-4 py-2 rounded-xl text-sm font-semibold bg-white text-brown-700 hover:bg-lilac-50 border border-brown-200 transition-all flex items-center gap-2';
+      } else {
+        viewProd.classList.add('hidden');
+        viewRes.classList.remove('hidden');
+        tabRes.className = 'px-4 py-2 rounded-xl text-sm font-bold bg-lilac-600 text-white shadow-xs transition-all flex items-center gap-2';
+        tabProd.className = 'px-4 py-2 rounded-xl text-sm font-semibold bg-white text-brown-700 hover:bg-lilac-50 border border-brown-200 transition-all';
+      }
+      renderStoreFilters();
+      renderStoreContent();
+    }
+
+    // LOGIN ADMIN
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const pwd = document.getElementById('admin-pwd-input').value;
+      if (pwd === 'plum123') {
+        isAdminLoggedIn = true;
+        sessionStorage.setItem(STORAGE_KEY_AUTH, 'true');
+        document.getElementById('auth-error-msg').classList.add('hidden');
+        updateUI();
+      } else {
+        document.getElementById('auth-error-msg').classList.remove('hidden');
+      }
+    }
+
+    function handleAdminLogout() {
+      isAdminLoggedIn = false;
+      sessionStorage.removeItem(STORAGE_KEY_AUTH);
+      updateUI();
+    }
+
+    // PESTAÑAS DENTRO DEL PANEL ADMIN
+    function setAdminMainTab(tab) {
+      adminMainTab = tab;
+      const viewProds = document.getElementById('admin-view-products');
+      const viewRes = document.getElementById('admin-view-resources');
+      const btnProds = document.getElementById('admin-tab-btn-products');
+      const btnRes = document.getElementById('admin-tab-btn-resources');
+
+      if (tab === 'products') {
+        viewProds.classList.remove('hidden');
+        viewRes.classList.add('hidden');
+        btnProds.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brown-900 text-white shadow-xs transition-all';
+        btnRes.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-brown-700 hover:text-brown-900 transition-all';
+        renderAdminProducts();
+      } else {
+        viewProds.classList.add('hidden');
+        viewRes.classList.remove('hidden');
+        btnRes.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-lilac-600 text-white shadow-xs transition-all';
+        btnProds.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-brown-700 hover:text-brown-900 transition-all';
+        renderAdminResources();
+      }
+    }
+
+    // FILTROS DE RECURSOS ADMIN
+    function setAdminResourceFilter(filter) {
+      adminResourceFilter = filter;
+      const tabAll = document.getElementById('tab-res-all');
+      const tabPdf = document.getElementById('tab-res-pdf');
+      const tabCanva = document.getElementById('tab-res-canva');
+
+      [tabAll, tabPdf, tabCanva].forEach(b => {
+        b.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-brown-600 hover:text-brown-900';
+      });
+
+      if (filter === 'all') tabAll.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-brown-900 shadow-xs';
+      if (filter === 'pdf') tabPdf.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-brown-900 shadow-xs';
+      if (filter === 'canva') tabCanva.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-brown-900 shadow-xs';
+
+      renderAdminResources();
+    }
+
+    function setAdminProductCatFilter(cat) {
+      adminProductCatFilter = cat;
+      renderAdminProducts();
+    }
+
+    // RENDERIZAR PRODUCTOS EN ADMIN CON EDICIÓN
+    function renderAdminProducts() {
+      const container = document.getElementById('admin-products-grid');
+      const filterBar = document.getElementById('admin-product-categories-filter');
+
+      // Botones de filtro por categoría en admin
+      const allCats = ['all', ...productCategories];
+      filterBar.innerHTML = allCats.map(c => `
+        <button onclick="setAdminProductCatFilter('${c}')" class="px-3 py-1.5 rounded-xl font-semibold whitespace-nowrap transition-all ${adminProductCatFilter === c ? 'bg-brown-900 text-white' : 'bg-brown-50 text-brown-700 hover:bg-brown-100'}">
+          ${c === 'all' ? 'Todos (' + products.length + ')' : c}
+        </button>
+      `).join('');
+
+      let filtered = products;
+      if (adminProductCatFilter !== 'all') {
+        filtered = filtered.filter(p => p.category === adminProductCatFilter);
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center text-brown-500 bg-brown-50 rounded-2xl border border-dashed border-brown-200">
+            <p class="font-serif-brand text-lg font-bold text-brown-800">No hay productos en esta categoría</p>
+            <button onclick="openProductModal()" class="mt-3 px-4 py-2 bg-brown-900 text-white text-xs font-bold rounded-xl">+ Crear nuevo producto o pack</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(p => `
+        <div class="bg-white rounded-2xl border border-brown-200 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+          <div>
+            <div class="relative h-48 bg-brown-100 overflow-hidden">
+              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80'" />
+              <div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1">
+                <span class="bg-white/95 text-brown-900 text-[10px] font-bold px-2 py-0.5 rounded-full border border-brown-200">${p.category}</span>
+                ${p.badge ? `<span class="bg-pastel-yellow text-brown-900 text-[10px] font-bold px-2 py-0.5 rounded-full border border-yellow-300">${p.badge}</span>` : ''}
+              </div>
+              <button onclick="toggleProductStock('${p.id}')" class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-xs ${p.inStock ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'}">
+                ${p.inStock ? '✓ En Stock' : '✕ Agotado'}
+              </button>
+            </div>
+            
+            <div class="p-4">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] uppercase font-bold text-brown-400">Precio</span>
+                <span class="font-serif-brand text-lg font-bold text-brown-900">${p.currency || '$'}${Number(p.price).toFixed(2)}</span>
+              </div>
+              <h4 class="font-serif-brand font-bold text-brown-900 text-base mt-1 line-clamp-1">${p.name}</h4>
+              <p class="text-xs text-brown-600 line-clamp-2 mt-1">${p.description}</p>
+            </div>
+          </div>
+
+          <div class="p-4 pt-0">
+            <div class="flex items-center gap-2 pt-3 border-t border-brown-100">
+              <button onclick="editProduct('${p.id}')" class="flex-1 py-1.5 rounded-xl bg-lilac-50 hover:bg-lilac-100 text-lilac-700 text-xs font-bold border border-lilac-200 transition-colors flex items-center justify-center gap-1">
+                <span>✏️ Editar Detalles</span>
+              </button>
+              <button onclick="deleteProduct('${p.id}')" class="p-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs border border-rose-200" title="Eliminar producto">
+                🗑️
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // RENDERIZADO DE RECURSOS EN ADMIN
+    function renderAdminResources() {
+      const grid = document.getElementById('admin-resources-grid');
+      let filtered = resources;
+
+      if (adminResourceFilter === 'pdf') filtered = filtered.filter(r => r.type === 'pdf');
+      if (adminResourceFilter === 'canva') filtered = filtered.filter(r => r.type === 'canva');
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-brown-500 bg-brown-50 rounded-2xl border border-dashed border-brown-200">
+            <p class="font-serif-brand text-lg font-bold text-brown-800">No hay recursos en esta categoría</p>
+            <p class="text-xs mt-1">Haz clic en "+ Agregar Nuevo Recurso" para comenzar.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(r => {
+        const isPdf = r.type === 'pdf';
+        const typeBadge = isPdf 
+          ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-rose-100 text-rose-800 border border-rose-200">📄 Archivo PDF</span>'
+          : '<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-lilac-200 text-brown-900 border border-lilac-300">🎨 Editable Canva</span>';
+        
+        const publicBadge = r.isPublic
+          ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-pastel-mint text-brown-900 border border-emerald-300">Visible en Tienda</span>'
+          : '<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-brown-100 text-brown-600 border border-brown-200">Solo Admin</span>';
+
+        const mainActionButton = isPdf
+          ? `<a href="${r.url}" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl text-center text-xs font-bold bg-rose-500 hover:bg-rose-600 text-white shadow-xs transition-all flex items-center justify-center gap-1.5">
+              <span>Descargar PDF</span>
+             </a>`
+          : `<a href="${r.url}" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl text-center text-xs font-bold bg-lilac-600 hover:bg-lilac-700 text-white shadow-xs transition-all flex items-center justify-center gap-1.5">
+              <span>Editar en Canva</span>
+             </a>`;
+
+        return `
+          <div class="bg-white rounded-2xl border border-brown-200 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="relative h-44 bg-brown-100 overflow-hidden">
+                <img src="${r.coverImage}" alt="${r.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80'" />
+                <div class="absolute top-2.5 left-2.5">${typeBadge}</div>
+                <div class="absolute top-2.5 right-2.5">${publicBadge}</div>
+              </div>
+              
+              <div class="p-4">
+                <span class="text-[11px] font-semibold text-brown-400 uppercase tracking-wider">${r.category}</span>
+                <h4 class="font-serif-brand font-bold text-brown-900 text-base line-clamp-1 mt-0.5">${r.title}</h4>
+                <p class="text-xs text-brown-600 line-clamp-2 mt-1.5">${r.description || 'Sin descripción adicional.'}</p>
+              </div>
+            </div>
+
+            <div class="p-4 pt-0">
+              <div class="flex items-center gap-2 pt-2 border-t border-brown-100">
+                ${mainActionButton}
+                <button onclick="editResource('${r.id}')" title="Editar" class="p-2 rounded-xl bg-brown-50 hover:bg-brown-100 text-brown-700 border border-brown-200">
+                  ✏️
+                </button>
+                <button onclick="deleteResource('${r.id}')" title="Eliminar" class="p-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200">
+                  🗑️
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // FILTROS DE LA TIENDA PÚBLICA
+    function renderStoreFilters() {
+      const bar = document.getElementById('store-category-filters');
+      if (storeSubTab === 'products') {
+        const cats = ['all', ...productCategories];
+        bar.innerHTML = cats.map(c => `
+          <button onclick="filterStoreCategory('${c}')" class="px-3 py-1.5 rounded-xl font-semibold whitespace-nowrap transition-all ${storeSelectedCat === c ? 'bg-brown-900 text-white' : 'bg-white text-brown-700 hover:bg-brown-50 border border-brown-200'}">
+            ${c === 'all' ? 'Todos los productos' : c}
+          </button>
+        `).join('');
+      } else {
+        const cats = ['all', ...categories];
+        bar.innerHTML = cats.map(c => `
+          <button onclick="filterStoreCategory('${c}')" class="px-3 py-1.5 rounded-xl font-semibold whitespace-nowrap transition-all ${storeSelectedCat === c ? 'bg-lilac-600 text-white' : 'bg-white text-brown-700 hover:bg-brown-50 border border-brown-200'}">
+            ${c === 'all' ? 'Todas las descargas' : c}
+          </button>
+        `).join('');
+      }
+    }
+
+    function filterStoreCategory(cat) {
+      storeSelectedCat = cat;
+      renderStoreFilters();
+      renderStoreContent();
+    }
+
+    // RENDERIZADO DE TIENDA PÚBLICA
+    function renderStoreContent() {
+      const query = (document.getElementById('store-search').value || '').toLowerCase();
+      
+      // 1. Catálogo de Productos
+      const prodGrid = document.getElementById('products-grid');
+      const filteredProds = products.filter(p => {
+        const matchQ = p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query) || p.description.toLowerCase().includes(query);
+        const matchC = storeSelectedCat === 'all' || p.category === storeSelectedCat;
+        return matchQ && matchC;
+      });
+
+      if (filteredProds.length === 0) {
+        prodGrid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-brown-500 bg-white rounded-3xl border border-brown-200">
+            <p class="font-serif-brand text-lg font-bold text-brown-800">No se encontraron productos con ese filtro</p>
+          </div>
+        `;
+      } else {
+        prodGrid.innerHTML = filteredProds.map(p => `
+          <div class="bg-white rounded-3xl border border-brown-200 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <div class="relative h-56 bg-brown-100 overflow-hidden">
+                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80'" />
+                ${p.badge ? `<span class="absolute top-3 left-3 bg-pastel-yellow text-brown-900 text-xs font-bold px-2.5 py-0.5 rounded-full border border-yellow-200 shadow-xs">${p.badge}</span>` : ''}
+                <span class="absolute bottom-3 right-3 bg-white/90 text-brown-900 text-[11px] font-semibold px-2 py-0.5 rounded-lg border border-brown-200">${p.category}</span>
+              </div>
+              <div class="p-5">
+                <h3 class="font-serif-brand font-bold text-brown-900 text-lg leading-snug">${p.name}</h3>
+                <p class="text-xs text-brown-600 mt-2 line-clamp-2 leading-relaxed">${p.description}</p>
+              </div>
+            </div>
+            
+            <div class="p-5 pt-0">
+              <div class="pt-4 border-t border-brown-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] uppercase font-bold text-brown-400">Precio</span>
+                  <p class="font-serif-brand text-xl font-bold text-brown-900">${p.currency || '$'}${Number(p.price).toFixed(2)}</p>
+                </div>
+                <a href="https://wa.me/${'+5491123456789'.replace(/[^0-9]/g, '')}?text=Hola%20plumbysol!%20Quiero%20consultar%20por%20${encodeURIComponent(p.name)}" target="_blank" class="px-4 py-2 rounded-xl bg-pastel-mint hover:bg-emerald-200 text-brown-900 border border-emerald-300 text-xs font-bold transition-all shadow-xs flex items-center gap-1.5">
+                  <span>💬 Pedir por WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 2. Recursos Públicos
+      const resGrid = document.getElementById('store-resources-grid');
+      const publicResources = resources.filter(r => r.isPublic && (
+        storeSelectedCat === 'all' || r.category === storeSelectedCat
+      ) && (
+        r.title.toLowerCase().includes(query) || r.category.toLowerCase().includes(query)
+      ));
+
+      document.getElementById('public-res-count').textContent = publicResources.length;
+
+      if (publicResources.length === 0) {
+        resGrid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-brown-500 bg-white rounded-3xl border border-brown-200">
+            <p class="font-serif-brand text-lg font-bold text-brown-800">No hay recursos públicos disponibles con ese término</p>
+          </div>
+        `;
+      } else {
+        resGrid.innerHTML = publicResources.map(r => {
+          const isPdf = r.type === 'pdf';
+          const typeBadge = isPdf 
+            ? '<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200">📄 Imprimible PDF</span>'
+            : '<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-lilac-200 text-brown-900 border border-lilac-300">🎨 Editable Canva</span>';
+
+          const clientButton = isPdf
+            ? `<a href="${r.url}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl text-center text-xs font-bold bg-rose-500 hover:bg-rose-600 text-white shadow-xs transition-all flex items-center justify-center gap-2">
+                <span>Descargar PDF</span>
+               </a>`
+            : `<a href="${r.url}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl text-center text-xs font-bold bg-lilac-600 hover:bg-lilac-700 text-white shadow-xs transition-all flex items-center justify-center gap-2">
+                <span>Editar en Canva</span>
+               </a>`;
+
+          return `
+            <div class="bg-white rounded-3xl border border-brown-200 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="relative h-48 bg-brown-100 overflow-hidden">
+                  <img src="${r.coverImage}" alt="${r.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80'" />
+                  <div class="absolute top-3 left-3">${typeBadge}</div>
+                </div>
+                <div class="p-5">
+                  <span class="text-xs font-semibold text-brown-400 uppercase tracking-wider">${r.category}</span>
+                  <h3 class="font-serif-brand font-bold text-brown-900 text-base mt-1 line-clamp-1">${r.title}</h3>
+                  <p class="text-xs text-brown-600 mt-2 line-clamp-2 leading-relaxed">${r.description}</p>
+                </div>
+              </div>
+              <div class="p-5 pt-0">
+                <div class="pt-3 border-t border-brown-100">
+                  ${clientButton}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    // ACTUALIZAR UI GENERAL
+    function updateUI() {
+      document.getElementById('metric-total-prod').textContent = products.length;
+      document.getElementById('metric-pdf-count').textContent = resources.filter(r => r.type === 'pdf').length;
+      document.getElementById('metric-canva-count').textContent = resources.filter(r => r.type === 'canva').length;
+      document.getElementById('metric-public-count').textContent = resources.filter(r => r.isPublic).length;
+
+      const authGate = document.getElementById('admin-auth-gate');
+      const authArea = document.getElementById('admin-authenticated-area');
+      const lockIcon = document.getElementById('admin-lock-icon');
+
+      if (isAdminLoggedIn) {
+        authGate.classList.add('hidden');
+        authArea.classList.remove('hidden');
+        lockIcon.textContent = '🔓';
+        if (adminMainTab === 'products') renderAdminProducts();
+        else renderAdminResources();
+      } else {
+        authGate.classList.remove('hidden');
+        authArea.classList.add('hidden');
+        lockIcon.textContent = '🔒';
+      }
+
+      renderStoreFilters();
+      renderStoreContent();
+    }
+
+    // ================= PRODUCTOS: MODAL Y CRUD =================
+    function renderProductCategoryOptions(selectedVal) {
+      const select = document.getElementById('form-product-category');
+      if (!select) return;
+      const targetVal = selectedVal || (productCategories[0] || 'Amigurumis & Crochet');
+      if (targetVal && !productCategories.includes(targetVal)) {
+        productCategories.push(targetVal);
+        localStorage.setItem(STORAGE_KEY_PROD_CATS, JSON.stringify(productCategories));
+      }
+      select.innerHTML = productCategories.map(c => `
+        <option value="${c}" ${c === targetVal ? 'selected' : ''}>${c}</option>
+      `).join('') + '<option value="__NEW__" class="text-lilac-700 font-bold">+ Crear nueva categoría personalizada...</option>';
+    }
+
+    function toggleCustomProductCategoryInput() {
+      const box = document.getElementById('box-new-prod-category');
+      box.classList.toggle('hidden');
+      if (!box.classList.contains('hidden')) {
+        document.getElementById('input-custom-prod-category').focus();
+      }
+    }
+
+    function onProductCategorySelectChange(val) {
+      if (val === '__NEW__') {
+        document.getElementById('box-new-prod-category').classList.remove('hidden');
+        document.getElementById('input-custom-prod-category').focus();
+      }
+    }
+
+    function saveCustomProductCategoryFromForm() {
+      const input = document.getElementById('input-custom-prod-category');
+      const val = (input.value || '').trim();
+      if (!val) return;
+      if (!productCategories.includes(val)) {
+        productCategories.push(val);
+        localStorage.setItem(STORAGE_KEY_PROD_CATS, JSON.stringify(productCategories));
+      }
+      renderProductCategoryOptions(val);
+      input.value = '';
+      document.getElementById('box-new-prod-category').classList.add('hidden');
+    }
+
+    function openProductModal(productId = null) {
+      const modal = document.getElementById('modal-product-form');
+      const title = document.getElementById('modal-product-title');
+      const catBox = document.getElementById('box-new-prod-category');
+      if (catBox) catBox.classList.add('hidden');
+
+      if (productId) {
+        const item = products.find(p => p.id === productId);
+        if (!item) return;
+        title.textContent = 'Editar Detalles de Producto / Pack';
+        document.getElementById('form-product-id').value = item.id;
+        document.getElementById('form-product-name').value = item.name;
+        document.getElementById('form-product-currency').value = item.currency || '$';
+        document.getElementById('form-product-price').value = item.price;
+        renderProductCategoryOptions(item.category);
+        document.getElementById('form-product-image').value = item.image;
+        document.getElementById('form-product-badge').value = item.badge || '';
+        document.getElementById('form-product-desc').value = item.description || '';
+        document.getElementById('form-product-stock').checked = item.inStock !== false;
+      } else {
+        title.textContent = 'Agregar Nuevo Producto o Pack';
+        document.getElementById('form-product-id').value = '';
+        document.getElementById('form-product-name').value = '';
+        document.getElementById('form-product-currency').value = '$';
+        document.getElementById('form-product-price').value = '24.00';
+        renderProductCategoryOptions(productCategories[0] || 'Amigurumis & Crochet');
+        document.getElementById('form-product-image').value = 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80';
+        document.getElementById('form-product-badge').value = 'Hecho a Mano';
+        document.getElementById('form-product-desc').value = '';
+        document.getElementById('form-product-stock').checked = true;
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeProductModal() {
+      document.getElementById('modal-product-form').classList.add('hidden');
+    }
+
+    function setPresetProductImage(url) {
+      document.getElementById('form-product-image').value = url;
+    }
+
+    function handleSaveProduct(e) {
+      e.preventDefault();
+      const id = document.getElementById('form-product-id').value;
+      const name = document.getElementById('form-product-name').value.trim();
+      const currency = document.getElementById('form-product-currency').value;
+      const price = parseFloat(document.getElementById('form-product-price').value) || 0;
+      const category = (document.getElementById('form-product-category').value || '').trim();
+      const image = document.getElementById('form-product-image').value.trim();
+      const badge = document.getElementById('form-product-badge').value.trim();
+      const description = document.getElementById('form-product-desc').value.trim();
+      const inStock = document.getElementById('form-product-stock').checked;
+
+      if (!name || !image) return;
+
+      if (category && category !== '__NEW__' && !productCategories.includes(category)) {
+        productCategories.push(category);
+        localStorage.setItem(STORAGE_KEY_PROD_CATS, JSON.stringify(productCategories));
+      }
+
+      if (id) {
+        const idx = products.findIndex(p => p.id === id);
+        if (idx !== -1) {
+          products[idx] = {
+            ...products[idx],
+            name,
+            currency,
+            price,
+            category,
+            image,
+            badge,
+            description,
+            inStock
+          };
+        }
+      } else {
+        const newProd = {
+          id: 'prod-' + Date.now(),
+          name,
+          currency,
+          price,
+          category,
+          image,
+          badge,
+          description,
+          inStock,
+          featured: true
+        };
+        products.unshift(newProd);
+      }
+
+      localStorage.setItem(STORAGE_KEY_PROD, JSON.stringify(products));
+      closeProductModal();
+      updateUI();
+    }
+
+    function editProduct(id) {
+      openProductModal(id);
+    }
+
+    function deleteProduct(id) {
+      if (confirm('¿Estás segura de eliminar este producto del catálogo?')) {
+        products = products.filter(p => p.id !== id);
+        localStorage.setItem(STORAGE_KEY_PROD, JSON.stringify(products));
+        updateUI();
+      }
+    }
+
+    function toggleProductStock(id) {
+      const item = products.find(p => p.id === id);
+      if (item) {
+        item.inStock = !item.inStock;
+        localStorage.setItem(STORAGE_KEY_PROD, JSON.stringify(products));
+        updateUI();
+      }
+    }
+
+    // ================= RECURSOS: MODAL Y CRUD =================
+    function renderCategoryOptions(selectedVal) {
+      const select = document.getElementById('form-resource-category');
+      if (!select) return;
+      const targetVal = selectedVal || (categories[0] || 'Planners & Agendas');
+      if (targetVal && !categories.includes(targetVal)) {
+        categories.push(targetVal);
+        localStorage.setItem(STORAGE_KEY_CATS, JSON.stringify(categories));
+      }
+      select.innerHTML = categories.map(c => `
+        <option value="${c}" ${c === targetVal ? 'selected' : ''}>${c}</option>
+      `).join('') + '<option value="__NEW__" class="text-lilac-700 font-bold">+ Crear nueva categoría personalizada...</option>';
+    }
+
+    function toggleCustomCategoryInput() {
+      const box = document.getElementById('box-new-category');
+      box.classList.toggle('hidden');
+      if (!box.classList.contains('hidden')) {
+        document.getElementById('input-custom-category').focus();
+      }
+    }
+
+    function onCategorySelectChange(val) {
+      if (val === '__NEW__') {
+        document.getElementById('box-new-category').classList.remove('hidden');
+        document.getElementById('input-custom-category').focus();
+      }
+    }
+
+    function saveCustomCategoryFromForm() {
+      const input = document.getElementById('input-custom-category');
+      const val = (input.value || '').trim();
+      if (!val) return;
+      if (!categories.includes(val)) {
+        categories.push(val);
+        localStorage.setItem(STORAGE_KEY_CATS, JSON.stringify(categories));
+      }
+      renderCategoryOptions(val);
+      input.value = '';
+      document.getElementById('box-new-category').classList.add('hidden');
+    }
+
+    function openResourceModal(resourceId = null) {
+      const modal = document.getElementById('modal-resource-form');
+      const formTitle = document.getElementById('modal-form-title');
+      const catBox = document.getElementById('box-new-category');
+      if (catBox) catBox.classList.add('hidden');
+      
+      if (resourceId) {
+        const item = resources.find(r => r.id === resourceId);
+        if (!item) return;
+        formTitle.textContent = 'Editar Recurso';
+        document.getElementById('form-resource-id').value = item.id;
+        document.getElementById('form-resource-title').value = item.title;
+        const typeRadio = document.querySelector('input[name="resource-type"][value="' + item.type + '"]');
+        if (typeRadio) typeRadio.checked = true;
+        document.getElementById('form-resource-url').value = item.url;
+        document.getElementById('form-resource-image').value = item.coverImage;
+        renderCategoryOptions(item.category);
+        document.getElementById('form-resource-desc').value = item.description;
+        document.getElementById('form-resource-public').checked = item.isPublic;
+      } else {
+        formTitle.textContent = 'Agregar Nuevo Recurso';
+        document.getElementById('form-resource-id').value = '';
+        document.getElementById('form-resource-title').value = '';
+        document.querySelector('input[name="resource-type"][value="pdf"]').checked = true;
+        document.getElementById('form-resource-url').value = '';
+        document.getElementById('form-resource-image').value = 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80';
+        renderCategoryOptions(categories[0] || 'Planners & Agendas');
+        document.getElementById('form-resource-desc').value = '';
+        document.getElementById('form-resource-public').checked = true;
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeResourceModal() {
+      document.getElementById('modal-resource-form').classList.add('hidden');
+    }
+
+    function setPresetImage(url) {
+      document.getElementById('form-resource-image').value = url;
+    }
+
+    function handleSaveResource(e) {
+      e.preventDefault();
+      const id = document.getElementById('form-resource-id').value;
+      const title = document.getElementById('form-resource-title').value.trim();
+      const type = document.querySelector('input[name="resource-type"]:checked').value;
+      const url = document.getElementById('form-resource-url').value.trim();
+      const coverImage = document.getElementById('form-resource-image').value.trim();
+      const category = (document.getElementById('form-resource-category').value || '').trim();
+      const description = document.getElementById('form-resource-desc').value.trim();
+      const isPublic = document.getElementById('form-resource-public').checked;
+
+      if (!title || !url || !coverImage) return;
+
+      if (category && category !== '__NEW__' && !categories.includes(category)) {
+        categories.push(category);
+        localStorage.setItem(STORAGE_KEY_CATS, JSON.stringify(categories));
+      }
+
+      if (id) {
+        const index = resources.findIndex(r => r.id === id);
+        if (index !== -1) {
+          resources[index] = { ...resources[index], title, type, url, coverImage, category, description, isPublic };
+        }
+      } else {
+        const newResource = {
+          id: 'res-' + Date.now(),
+          title,
+          type,
+          url,
+          coverImage,
+          category,
+          description,
+          isPublic,
+          createdAt: new Date().toISOString().split('T')[0],
+          downloads: 0
+        };
+        resources.unshift(newResource);
+      }
+
+      localStorage.setItem(STORAGE_KEY_RES, JSON.stringify(resources));
+      closeResourceModal();
+      updateUI();
+    }
+
+    function editResource(id) {
+      openResourceModal(id);
+    }
+
+    function deleteResource(id) {
+      if (confirm('¿Estás segura de eliminar este recurso de la biblioteca?')) {
+        resources = resources.filter(r => r.id !== id);
+        localStorage.setItem(STORAGE_KEY_RES, JSON.stringify(resources));
+        updateUI();
+      }
+    }
+
+    // ================= GESTOR GLOBAL DE CATEGORÍAS =================
+    function openCategoryManagerModal() {
+      const modal = document.getElementById('modal-category-manager');
+      modal.classList.remove('hidden');
+      renderCategoryManagerList();
+    }
+
+    function closeCategoryManagerModal() {
+      document.getElementById('modal-category-manager').classList.add('hidden');
+      updateUI();
+    }
+
+    function setCategoryManagerTab(tab) {
+      catManagerTab = tab;
+      const btnProd = document.getElementById('cat-mgr-tab-prod');
+      const btnRes = document.getElementById('cat-mgr-tab-res');
+      if (tab === 'products') {
+        btnProd.className = 'py-2 px-3 rounded-xl text-xs font-bold bg-white text-brown-900 shadow-xs';
+        btnRes.className = 'py-2 px-3 rounded-xl text-xs font-semibold text-brown-600 hover:text-brown-900';
+      } else {
+        btnRes.className = 'py-2 px-3 rounded-xl text-xs font-bold bg-white text-brown-900 shadow-xs';
+        btnProd.className = 'py-2 px-3 rounded-xl text-xs font-semibold text-brown-600 hover:text-brown-900';
+      }
+      renderCategoryManagerList();
+    }
+
+    function renderCategoryManagerList() {
+      const container = document.getElementById('cat-mgr-list');
+      const list = catManagerTab === 'products' ? productCategories : categories;
+
+      container.innerHTML = list.map(c => `
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-brown-50 border border-brown-200">
+          <span class="text-xs font-bold text-brown-800">🏷️ ${c}</span>
+          <div class="flex items-center gap-1.5">
+            <button onclick="promptRenameCategory('${c}')" class="px-2 py-1 rounded-lg bg-white border border-brown-200 text-xs font-semibold text-brown-700 hover:bg-brown-100">
+              ✏️ Renombrar
+            </button>
+            <button onclick="deleteCategoryFromManager('${c}')" class="px-2 py-1 rounded-lg bg-rose-50 border border-rose-200 text-xs font-semibold text-rose-700 hover:bg-rose-100">
+              🗑️
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function handleAddCategoryFromManager() {
+      const input = document.getElementById('cat-mgr-new-input');
+      const val = (input.value || '').trim();
+      if (!val) return;
+
+      if (catManagerTab === 'products') {
+        if (!productCategories.includes(val)) {
+          productCategories.push(val);
+          localStorage.setItem(STORAGE_KEY_PROD_CATS, JSON.stringify(productCategories));
+        }
+      } else {
+        if (!categories.includes(val)) {
+          categories.push(val);
+          localStorage.setItem(STORAGE_KEY_CATS, JSON.stringify(categories));
+        }
+      }
+      input.value = '';
+      renderCategoryManagerList();
+    }
+
+    function promptRenameCategory(oldName) {
+      const newName = prompt('Ingresa el nuevo nombre para la categoría:', oldName);
+      if (!newName || !newName.trim() || newName.trim() === oldName) return;
+      const clean = newName.trim();
+
+      if (catManagerTab === 'products') {
+        productCategories = productCategories.map(c => c === oldName ? clean : c);
+        // Actualizar en productos existentes
+        products = products.map(p => p.category === oldName ? { ...p, category: clean } : p);
+        localStorage.setItem(STORAGE_KEY_PROD_CATS, JSON.stringify(productCategories));
+        localStorage.setItem(STORAGE_KEY_PROD, JSON.stringify(products));
+      } else {
+        categories = categories.map(c => c === oldName ? clean : c);
+        // Actualizar en recursos existentes
+        resources = resources.map(r => r.category === oldName ? { ...r, category: clean } : r);
+        localStorage.setItem(STORAGE_KEY_CATS, JSON.stringify(categories));
+        localStorage.setItem(STORAGE_KEY_RES, JSON.stringify(resources));
+      }
+      renderCategoryManagerList();
+    }
+
+    function deleteCategoryFromManager(name) {
+      if (!confirm('¿Deseas eliminar la categoría "' + name + '"?')) return;
+      if (catManagerTab === 'products') {
+        productCategories = productCategories.filter(c => c !== name);
+        if (productCategories.length === 0) productCategories = ['Amigurumis & Crochet'];
+        localStorage.setItem(STORAGE_KEY_PROD_CATS, JSON.stringify(productCategories));
+      } else {
+        categories = categories.filter(c => c !== name);
+        if (categories.length === 0) categories = ['Planners & Agendas'];
+        localStorage.setItem(STORAGE_KEY_CATS, JSON.stringify(categories));
+      }
+      renderCategoryManagerList();
+    }
+
+    // INICIAR AL CARGAR
+    window.addEventListener('DOMContentLoaded', () => {
+      initData();
+    });
+  </script>
+</body>
+</html>
