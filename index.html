@@ -20,6 +20,18 @@ button,.btn{font:inherit;font-weight:700;border:0;border-radius:14px;padding:10p
 main{max-width:1100px;margin:auto;padding:16px}section.v{display:none}section.v.on{display:block}
 .hero{background:linear-gradient(135deg,var(--ll),var(--p));border-radius:24px;padding:36px 22px;text-align:center}
 .hero h1{font-size:34px;margin-bottom:8px}.hero p{margin:10px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin:14px 0}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 3px 12px #6d597a22;display:flex;flex-direction:column}
+.card .im{aspect-ratio:1;display:grid;place-items:center;font-size:54px;background:var(--ll)}.card .im img{width:100%;height:100%;object-fit:cover}
+.card .bd{padding:10px;display:flex;flex-direction:column;gap:6px;flex:1}.card h3{font-size:15px}
+.bg{position:absolute;margin:8px;background:var(--m);border-radius:10px;padding:2px 8px;font-size:12px;font-weight:700}
+.tag{font-size:11px;background:var(--ll);border-radius:8px;padding:2px 7px;color:var(--b)}
+.pr{font-weight:700;color:var(--b);font-size:18px}.card button{margin-top:auto}
+input,select{font:inherit;padding:10px;border:2px solid var(--ll);border-radius:12px;width:100%;background:#fff}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.row>*{flex:1;min-width:120px}
+#cart{position:fixed;top:0;right:-100%;width:min(400px,100%);height:100%;background:#fff;z-index:50;transition:.3s;padding:16px;display:flex;flex-direction:column;box-shadow:-4px 0 20px #0003}
+#cart.on{right:0}#items{flex:1;overflow:auto}.it{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--ll)}.it span{flex:1}
+.q button{padding:2px 9px;border-radius:8px}.box{background:#fff;border-radius:18px;padding:16px;margin:12px 0}
 footer{background:var(--b);color:#fff;text-align:center;padding:24px;margin-top:30px}footer a{margin:0 6px}
 .out{font-size:26px;font-weight:700;color:var(--b);margin-top:10px}
 iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px}
@@ -58,7 +70,7 @@ iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px}
 <button onclick="wa()">💬 Pedir por WhatsApp</button>
 </aside>
 
-<footer><p class="logo" style="color:#fff">Plum Tienda</p><p style="margin:8px 0"><a id="wf" target="_blank">WhatsApp</a><a href="#contacto">Contacto</a><a href="#recursos" title="Acceso privado">🔒</a></p><small>© Plum by Sol. Todos los derechos reservados · Términos y condiciones</small></footer>
+<footer><p class="logo" style="color:#fff">Plum Tienda</p><p style="margin:8px 0"><a id="wf" target="_blank">WhatsApp</a><a href="#contacto">Contacto</a></p><small>© Plum by Sol. Todos los derechos reservados · Términos y condiciones</small> <a href="#recursos" style="font-size:9px;opacity:.3;text-decoration:none">🔒</a></footer>
 
 <script>
 /* ===== CONFIGURACIÓN (editá solo esto) ===== */
